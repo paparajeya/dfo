@@ -10,17 +10,37 @@ First, navigate to the **py** folder by running the following command in your te
 cd py/
 ```
 
-Make sure you have **.env** file in this folder. If not then create and insert these ```ENVIRONMENT VARIABLES```:
+Make sure you have ```.env``` file in this folder. If not then create and insert these ```ENVIRONMENT VARIABLES``` (template ```.env-dev``` can be used for this purpose; but make sure this file content is copied into ```.env``` file and all ```changethis``` values are replaced appropriately.):
 
 ```bash
+REDIS_PASSWORD=******************
+REDIS_PORT=6379
+REDIS_HTTP_PORT=8001
+REDIS_HOST=redis
+REDIS_DB=0
+REDIS_EXPIRY=-1
 
+ENVIRONMENT=local
+
+LOG_DIR="logs/"
+LOG_FILE=${ENVIRONMENT}"_dfo.log"
+ISSUE_FILE=${ENVIRONMENT}"_dfo_issues.log"
+LOG_INTERVAL=midnight
+MODE_LOG=debug
+BACKUP_COUNT=7
 ```
+
+Make sure you replace the ```ENVIRONMENT VARIABLES``` above with your own values.
 
 If you have [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) already installed, then use the following command to run the code in the docker container:
 
 ```bash
 docker-compose up -d
 ```
+
+The cached DFO data can be accessed/viewed via Redis Cache at [http://localhost:8001](http://localhost:8001). The default database is set to '0'. If you wish to change this, modify the ```REDIS_DB``` value in the ```ENVIRONMENT VARIABLES```. Then, incorporate this change into the URL to view the content of the desired database.
+
+- When ```REDIS_EXPIRY``` is set to negative value, the will become permanent. If you want to expire the data by certain time, adjust this value in seconds.
 
 
 ## Citations

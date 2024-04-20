@@ -9,4 +9,10 @@
 @Project    : Dispersive Flies Optimization (DFO) Algorithm
 """
 
-from .dfo import DFO
+from .manager import (
+    RedisManager,
+    redis_cache,
+    redis_json_cache,
+    redis_data_prefix_cache,
+    redis_manager,
+)

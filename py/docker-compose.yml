@@ -12,6 +12,21 @@ services:
       - "5000:5000"
     networks:
       - dfo_net
+    depends_on:
+      - redis
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redis_cache
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - ${REDIS_PORT}:6379
+      - ${REDIS_HTTP_PORT}:8001
+    networks:
+      - dfo_net
+    volumes:
+      - /data/dfo/redis-stack:/data
+    restart: always
 
 networks:
   dfo_net:

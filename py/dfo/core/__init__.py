@@ -9,4 +9,3 @@
 @Project    : Dispersive Flies Optimization (DFO) Algorithm
 """
 
-from .dfo import DFO

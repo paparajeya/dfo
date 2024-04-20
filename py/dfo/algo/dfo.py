@@ -1,11 +1,22 @@
-"""Implementation of the Dispersive Fly Optimization (DFO) algorithm."""
+# -*- coding: utf-8 -*-
+"""Driver Program for Dispersive Fly Optimization (DFO) algorithm.
 
-import logging
+@Author     : Dr Prashant Aparajeya
+                Founder & Director @AISimply Ltd
+                Computer Vision Scientist
+                London, United Kingdom
+
+@Credits    : Dr. Mohammad Majid al-Rifaie
+                Senior Lecturer in Computer Science
+                Greenwich University, London, UK
+                
+@Copyright  : Copyright 2024 - present
+@Project    : Dispersive Flies Optimization (DFO) Algorithm
+"""
+
 from typing import Dict, List, Tuple
 import numpy as np
-
-logger = logging.getLogger(__name__)
-
+from dfo.core.logger import logger
 
 class DFO:
     def __init__(

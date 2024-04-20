@@ -9,4 +9,4 @@
 @Project    : Dispersive Flies Optimization (DFO) Algorithm
 """
 
-from .dfo import DFO
+from .manager import WebsocketManager, ws_manager
