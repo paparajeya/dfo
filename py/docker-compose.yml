@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  dfo:
+    image: dfo
+    container_name: dfo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    networks:
+      - dfo_net
+
+networks:
+  dfo_net:
+    name: dfo_net
+    driver: bridge

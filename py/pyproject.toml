@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "dfo"
+version = "0.0.1"
+description = "Dispersive Flies Optimisation"
+authors = ["Prashant Aparajeya <p.aparajeya@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+pandas = "^2.2.1"
+numpy = "^1.26.4"
+
+[[tool.poetry.source]]
+name = "pypi"
+priority = "primary"
+
+[tool.poetry.group.dev.dependencies]
+python-dotenv = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
