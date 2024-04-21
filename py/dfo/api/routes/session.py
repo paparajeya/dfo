@@ -47,17 +47,17 @@ async def websocket_chatpoint(websocket: WebSocket):
             else:
                 json_data = data
             
-            if json_data.get("type") == "message":
+            if json_data.get("type") == "getId":
                 # Send the message to the client
                 message = {
-                    "type": "message",
-                    "data": f"Message received: {json_data.get('data')}",
+                    "type": "getId",
+                    "message": f"Message received: {json_data.get('data')}",
                     "token": session_id
                 }
             else:
                 message = {
                     "type": "error",
-                    "data": "Invalid message type",
+                    "message ": "Invalid message type",
                     "token": session_id
                 }
             await ws_manager.send_message(session_id, message)

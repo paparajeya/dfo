@@ -1,7 +1,7 @@
 services:
   app:
-    image: app
-    container_name: app
+    image: app-dfo
+    container_name: app-dfo
     build:
       context: .
       dockerfile: Dockerfile-app
