@@ -18,5 +18,5 @@ from api.routes.session import router as session_router
 api_router = APIRouter()
 
 api_router.include_router(health_router, tags=["health check"], prefix="/ping")
-api_router.include_router(session_router, tags=["sessions"], prefix="/sessions")
+api_router.include_router(session_router, tags=["session"], prefix="/session")
 

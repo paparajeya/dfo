@@ -10,6 +10,7 @@
 """
 
 import asyncio
+import json
 
 from fastapi import WebSocket
 from fastapi.param_functions import Header
@@ -33,15 +34,34 @@ async def websocket_chatpoint(websocket: WebSocket):
     # Accept the connection from the client
     session_id = await ws_manager.connect(websocket)
     
-    try:
-        # Send a welcome message to the client
-        message = {
-            "type": "message",
-            "data": f"Welcome to the session: {session_id}",
-            "token": session_id
-        }
-        await ws_manager.send_message(session_id, message)
+    try:        
         while True:
+            # Receive the first connection message from the client
+            data = await ws_manager.get_message(session_id)
+            logger.info(f"Received message from session: {session_id} - {data}")
+            
+            if type(data) == bytes:
+                data = data.decode("utf-8")
+            if type(data) == str:
+                json_data = json.loads(data)
+            else:
+                json_data = data
+            
+            if json_data.get("type") == "message":
+                # Send the message to the client
+                message = {
+                    "type": "message",
+                    "data": f"Message received: {json_data.get('data')}",
+                    "token": session_id
+                }
+            else:
+                message = {
+                    "type": "error",
+                    "data": "Invalid message type",
+                    "token": session_id
+                }
+            await ws_manager.send_message(session_id, message)
+            
             # This one won't receive any message for client and we would like to keep the connection alive
             await asyncio.sleep(1)
     except Exception as e:

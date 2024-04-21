@@ -16,15 +16,15 @@ Make sure you have ```.env``` file in this folder. If not then create and insert
 REDIS_PASSWORD=******************
 REDIS_PORT=6379
 REDIS_HTTP_PORT=8001
-REDIS_HOST=redis
+REDIS_SERVER=redis
 REDIS_DB=0
 REDIS_EXPIRY=-1
 
 ENVIRONMENT=local
 
-LOG_DIR="logs/"
-LOG_FILE=${ENVIRONMENT}"_dfo.log"
-ISSUE_FILE=${ENVIRONMENT}"_dfo_issues.log"
+LOG_DIR=logs/
+LOG_FILE=${ENVIRONMENT}_dfo.log
+ISSUE_FILE=${ENVIRONMENT}_dfo_issues.log
 LOG_INTERVAL=midnight
 MODE_LOG=debug
 BACKUP_COUNT=7
