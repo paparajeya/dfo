@@ -65,7 +65,7 @@ class WebsocketManager:
         if websocket := await self.__get_connection(session_id):
             # Close the WebSocket connection
             try:
-                if not websocket.is_closed():
+                if websocket.client_state != 2:
                     await websocket.close()
             except Exception as e:
                 logger.error(f"Error closing WebSocket connection: {e}")

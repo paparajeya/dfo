@@ -6,13 +6,17 @@ function Dfo() {
     const [socketId, setSocketId] = useState(null);
 
     useEffect(() => {
-        const newSocket = new WebSocket('ws://localhost:5000/api/v1/session/ws');
-        setSocket(newSocket);
+        if (!socket) {
+            const newSocket = new WebSocket('ws://localhost:5000/api/v1/session/ws');
+            setSocket(newSocket);
+        }
 
         return () => {
-            newSocket.close(); // Close the socket connection on component unmount
+            if (socket) {
+                socket.close(); // Close the socket connection on component unmount
+            }
         };
-    }, []);
+    }, [socket]);
 
     useEffect(() => {
         if (!socket) return;

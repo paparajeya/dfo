@@ -40,7 +40,7 @@ services:
       - dfo_net
     volumes:
       - /data/dfo/redis-stack:/data
-    restart: always
+    restart: unless-stopped
 
 networks:
   dfo_net:

@@ -51,7 +51,7 @@ async def websocket_chatpoint(websocket: WebSocket):
                 # Send the message to the client
                 message = {
                     "type": "getId",
-                    "message": f"Message received: {json_data.get('data')}",
+                    "message": f"Message received: {json_data.get('message')}",
                     "token": session_id
                 }
             else:
